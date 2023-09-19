@@ -26,10 +26,10 @@ export async function take_screenshot(url, width, height) {
 
   const browser = await puppeteer.launch({
     args: chromium.args,
-    headless: "new",
+    headless: false,
     executablePath: process.env.NODE_ENV == "development"
       ? process.env.CHROMIUM_DEV_EXECUTABLE_PATH
-      : await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v115.0.0/chromium-v115.0.0-pack.tar"),
+      : await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar"),
     ignoreHTTPSErrors: true
   });
 
