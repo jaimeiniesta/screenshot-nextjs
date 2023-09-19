@@ -46,7 +46,7 @@ export async function take_screenshot(url, width, height) {
 
     console.log("Screenshot of " + url + " at " + width + "x" + height);
 
-    const results = await page.screenshot({type: 'jpeg', quality: 85, fullPage: false});
+    const results = await page.screenshot({type: 'jpeg', quality: 85});
 
     return results;
     
