@@ -1,38 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Screenshot · NextJS · Vercel
 
-## Getting Started
+This is an example of a simple script to take screenshots using puppeteer, hosted in Vercel.
 
-First, run the development server:
+## Development Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+You'll need a local chromium which you can get as explained [in the chromium-min readme](https://www.npmjs.com/package/@sparticuz/chromium-min#user-content-running-locally--headlessheadful-mode).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once you have downloaded chromium, set an ENV variable to define the path where it's located. Take the `.env.local.example` file, save it as `.env.local` and edit the path.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Run `npm install` to install the dependencies, and then you can run the server with `npm run dev`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Visit http://localhost:3000/api/screenshot?url=http://example.com and you'll get your first screenshot.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Optionally, add the `w` and `h` parameters to set the width and height of the viewport:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+http://localhost:3000/api/screenshot?url=http://example.com&w=320&h=240
 
-## Learn More
+## Host in Vercel
 
-To learn more about Next.js, take a look at the following resources:
+This project runs in Vercel out of the box.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Known issues
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+I'm trying to update it past puppeteer 13, but from puppeteer 14 there's an error:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`Fontconfig error: No writable cache directories`
