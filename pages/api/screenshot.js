@@ -29,8 +29,9 @@ export async function take_screenshot(url, width, height) {
     headless: true,
     executablePath: process.env.NODE_ENV == "development"
       ? process.env.CHROMIUM_DEV_EXECUTABLE_PATH
-      : await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar"),
-    ignoreHTTPSErrors: true
+      : await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v117.0.0/chromium-v117.0.0-pack.tar"),
+    ignoreHTTPSErrors: true,
+    dumpio: true
   });
 
   const page = await browser.newPage();
@@ -41,12 +42,15 @@ export async function take_screenshot(url, width, height) {
       height: height
     });
 
+    const viewport = await page.viewport();
+    console.log("Viewport", viewport);
+
     await page.setBypassCSP(true);
     await page.goto(url);
 
     console.log("Screenshot of " + url + " at " + width + "x" + height);
 
-    const results = await page.screenshot({type: 'jpeg', quality: 85, fullPage: false});
+    const results = await page.screenshot({type: "jpeg", quality: 85, fullPage: false});
 
     return results;
     
