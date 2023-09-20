@@ -29,7 +29,7 @@ export async function take_screenshot(url, width, height) {
     headless: true,
     executablePath: process.env.NODE_ENV == "development"
       ? process.env.CHROMIUM_DEV_EXECUTABLE_PATH
-      : await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v112.0.0/chromium-v112.0.0-pack.tar"),
+      : await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v117.0.0/chromium-v117.0.0-pack.tar"),
     ignoreHTTPSErrors: true
   });
 
