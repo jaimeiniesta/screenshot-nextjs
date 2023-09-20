@@ -41,12 +41,15 @@ export async function take_screenshot(url, width, height) {
       height: height
     });
 
+    const viewport = await page.viewport();
+    console.log("Viewport", viewport);
+
     await page.setBypassCSP(true);
     await page.goto(url);
 
     console.log("Screenshot of " + url + " at " + width + "x" + height);
 
-    const results = await page.screenshot({type: 'jpeg', quality: 85, fullPage: false});
+    const results = await page.screenshot({type: "jpeg", quality: 85, fullPage: false});
 
     return results;
     
