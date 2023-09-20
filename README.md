@@ -19,9 +19,3 @@ http://localhost:3000/api/screenshot?url=http://example.com&w=320&h=240
 ## Host in Vercel
 
 This project runs in Vercel out of the box.
-
-## Known issues
-
-I'm trying to update it past puppeteer 13, but from puppeteer 14 there's an error:
-
-`Fontconfig error: No writable cache directories`
