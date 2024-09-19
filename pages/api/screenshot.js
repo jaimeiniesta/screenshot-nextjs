@@ -46,7 +46,12 @@ export async function take_screenshot(url, width, height) {
     console.log("Viewport", viewport);
 
     await page.setBypassCSP(true);
-    await page.goto(url);
+    await page.goto(url, { waitUntil: 'networkidle2' });
+    console.log(`Page loaded.`);
+
+    // Wait a bit longer to skip the loading screen
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    console.log(`Delayed for 5000ms.`);
 
     console.log("Screenshot of " + url + " at " + width + "x" + height);
 
